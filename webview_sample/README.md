@@ -2,6 +2,38 @@
 
 https://codelabs.developers.google.com/codelabs/flutter-webview?hl=ko#2
 
+
+## 작업사항
+
+webview_flutter => 4.0으로 변경했음.
+
+- add plugin
+
+```
+flutter pub add webview_flutter
+flutter pub add path_provider
+```
+
+```
+  webview_flutter: ^4.4.2
+  path_provider: ^2.1.1
+```
+
+- sdk version
+
+`android/app/build.gradle`
+```
+defaultConfig {
+    // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+    applicationId "com.example.webview_in_flutter"
+    minSdkVersion 20        // MODIFY
+    targetSdkVersion 30
+    versionCode flutterVersionCode.toInteger()
+    versionName flutterVersionName
+}
+
+```
+
 flutter.minSdkVersion
 C:\dev\flutter\packages\flutter_tools\gradle\src\main\groovy
 
