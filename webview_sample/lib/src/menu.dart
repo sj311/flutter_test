@@ -40,7 +40,7 @@ enum _MenuOptions {
 class Menu extends StatefulWidget {
   const Menu({required this.controller, Key? key}) : super(key: key);
 
-  final Completer<WebViewController> controller;
+  final WebViewController controller;
 
   @override
   State<Menu> createState() => _MenuState();
@@ -51,19 +51,18 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<WebViewController>(
-      future: widget.controller.future,
-      builder: (context, controller) {
+      var controller = widget.controller;
+    
         return PopupMenuButton<_MenuOptions>(
           onSelected: (value) async {
             switch (value) {
               case _MenuOptions.navigationDelegate:
-                controller.data!.loadRequest(Uri.parse('https://youtube.com'));
-                // controller.data!.loadUrl('https://youtube.com');
+                controller.loadRequest(Uri.parse('https://youtube.com'));
+                // controller.loadUrl('https://youtube.com');
                 break;
 
               case _MenuOptions.userAgent:
-                final userAgent = await controller.data!
+                final userAgent = await controller
                     .runJavaScriptReturningResult('navigator.userAgent');
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(userAgent.toString()),
@@ -71,7 +70,7 @@ class _MenuState extends State<Menu> {
                 break;
 
               case _MenuOptions.javascriptChannel:
-                await controller.data!.runJavaScript('''
+                await controller.runJavaScript('''
 var req = new XMLHttpRequest();
 req.open('GET', "https://api.ipify.org/?format=json");
 req.onload = function() {
@@ -89,25 +88,25 @@ req.send();''');
                 _onClearCookies();
                 break;
               case _MenuOptions.listCookies:
-                _onListCookies(controller.data!);
+                _onListCookies(controller);
                 break;
               case _MenuOptions.addCookie:
-                _onAddCookie(controller.data!);
+                _onAddCookie(controller);
                 break;
               case _MenuOptions.setCookie:
-                _onSetCookie(controller.data!);
+                _onSetCookie(controller);
                 break;
               case _MenuOptions.removeCookie:
-                _onRemoveCookie(controller.data!);
+                _onRemoveCookie(controller);
                 break;
               case _MenuOptions.loadFlutterAsset:
-                _onLoadFlutterAssetExample(controller.data!, context);
+                _onLoadFlutterAssetExample(controller, context);
                 break;
               case _MenuOptions.loadLocalFile:
-                _onLoadLocalFileExample(controller.data!, context);
+                _onLoadLocalFileExample(controller, context);
                 break;
               case _MenuOptions.loadHtmlString:
-                _onLoadHtmlStringExample(controller.data!, context);
+                _onLoadHtmlStringExample(controller, context);
                 break;
             }
           },
@@ -158,8 +157,6 @@ req.send();''');
             ),
           ],
         );
-      },
-    );
   }
 
   Future<void> _onListCookies(WebViewController controller) async {

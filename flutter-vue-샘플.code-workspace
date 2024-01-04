@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "my_first_app"
+		},
+		{
+			"path": "test_drive"
+		},
+		{
+			"path": "webview_sample"
+		},
+		{
+			"path": "vue-material-kit-master"
+		}
+	],
+	"settings": {}
+}

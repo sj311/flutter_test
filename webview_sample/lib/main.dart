@@ -23,7 +23,7 @@ class WebViewApp extends StatefulWidget {
 }
 
 class _WebViewAppState extends State<WebViewApp> {
-  final controller = Completer<WebViewController>(); 
+  final controller = WebViewController(); 
 
   @override
   Widget build(BuildContext context) {
