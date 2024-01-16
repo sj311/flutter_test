@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "vue-phone-number-input-master"
+		},
+		{
+			"path": "sweetalert2"
 		}
 	],
 	"settings": {}
