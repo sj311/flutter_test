@@ -1,3 +1,6 @@
 [submodule "sweetalert2"]
 	path = sweetalert2
 	url = https://github.com/sweetalert2/sweetalert2.git
+[submodule "vue-spinkit"]
+	path = vue-spinkit
+	url = https://github.com/TonPC64/vue-spinkit.git

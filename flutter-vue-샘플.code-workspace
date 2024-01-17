@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "sweetalert2"
+		},
+		{
+			"path": "vue-spinkit"
 		}
 	],
 	"settings": {}
